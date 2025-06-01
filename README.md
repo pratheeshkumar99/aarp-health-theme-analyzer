@@ -161,7 +161,7 @@ Below is a high-level view of every file and folder in this repository:
 ```
 Each entry corresponds to a module or output used by the pipeline.  
 
-### Methodology
+## Methodology
 
 ### Block diagram
 
