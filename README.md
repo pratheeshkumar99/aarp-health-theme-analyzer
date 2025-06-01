@@ -5,7 +5,7 @@
 2. Setup instruction 1. local 2. docker
 3. Project Tree
 4. Methodology
-5. Results - { Keywords & grouping of Articles } #pending
+5. Results - { Keywords & grouping of Articles } 
 6. Future of scope - optional -->
 
 ## Project Overview
@@ -257,127 +257,6 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
 ---
 
-
-### Results
-
-<!-- The system analyzed 313 scraped health articles from the AARP Health Channel using an automated LLM-driven pipeline. These articles were collected through a recursive web scraper configured to a depth level of 3. This means the crawler followed links up to three levels deep under the /health/ path, which allowed it to collect a broad and diverse set of health-related articles.
-
-You can adjust the depth to crawl more or fewer articles—deeper levels simply uncover more nested links. However, beyond a certain point, increasing the depth adds little new value, as most meaningful content has already been captured. For this prototype, a depth of 3 with ~300 articles was chosen to strike a balance between completeness and manageability.
-
-
-Article Summaries
-
-Once cleaned, each article was passed to the summarization module, which generated concise summaries using a Meta llama-4-maverick-17b-128e-instruct model. Below are two representative samples:
-
-URL 1: How to Reduce Microplastics [https://www.aarp.org/health/healthy-living/how-to-reduce-microplastics/]
-
-Summary:
-
-The article discusses the pervasive presence of microplastics in our environment, their potential health impacts, and offers practical tips to minimize exposure through everyday choices such as avoiding plastic containers and choosing fresh foods.
-
-URL 2:
-Extreme Heat Accelerates Aging [https://www.aarp.org/health/conditions-treatments/extreme-heat-accelerates-aging/]
-Summary:
-
-This article explores how prolonged exposure to extreme heat may contribute to accelerated biological aging, particularly in older adults, and highlights the importance of preventive strategies to mitigate heat-related risks.
-
-Theme Clustering
-
-The 313 articles were grouped into theme-based clusters by a language model that analyzed the summaries. Each article was mapped to a consistent theme or prompted the creation of a new one if it addressed a previously unseen topic. Below is a bar chart visualizing the distribution of themes across the dataset:
-
-Add images here
-
-Observations:
-
-As seen in the chart, the most frequently discussed theme was Nutrition, with 58 articles, making it a major focus of the AARP Health Channel. This was followed by COVID-19 Prevention (30 articles) and Eye Health (28 articles), both of which reflect ongoing health concerns, especially among older adults. Other prominent themes included Exercise and Health and Dementia Prevention, each with 25 articles, highlighting AARP’s emphasis on promoting healthy aging and cognitive well-being.
-
-Less frequent but still notable themes included Cardiovascular and Kidney Health, Sleep Health, and Vaccination & Disease Prevention, each receiving moderate representation. Meanwhile, specialized topics such as Skin Health, Diabetes Prevention, and Pain Management appeared in fewer than 5 articles. Finally, rare or emerging topics like Stress and Immune System Aging, HIV/AIDS Research, and Men’s Health were represented by only a single article, suggesting potential gaps or future areas for deeper editorial focus.
-
-
-Cluster Quality Evaluation
-To assess the quality of clustering, we reviewed representative samples from the top three highest-volume themes.
-
-Top 3 Themes (Well-Formed Clusters)
-1. Nutrition (58 articles)
-Sample articles:
-
-Foods you can eat without gaining weight
-
-Is mushroom coffee healthy?
-
-Nuts and seeds for brain health
-
-These articles are all focused on food, diet, and health, which aligns well with the "Nutrition" theme. The cluster is consistent and meaningful.
-
-
-Top 3 Themes (Well-Formed Clusters)
-1. Nutrition (58 articles)
-Sample articles:
-
-Foods you can eat without gaining weight [https://www.aarp.org/health/healthy-living/info-2023/foods-you-can-eat-without-gaining-weight.html]
-
-Is mushroom coffee healthy? [https://www.aarp.org/health/healthy-living/is-mushroom-coffee-healthy/]
-
-Nuts and seeds for brain health [https://www.aarp.org/health/healthy-living/nuts-and-seeds-for-brain-health/]
-
-These articles are all focused on food, diet, and health, which aligns well with the "Nutrition" theme. The cluster is consistent and meaningful.
-
-
-2. COVID-19 Prevention (30 articles)
-Sample articles:
-
-Foods you can eat without gaining weight [https://chatgpt.com/c/683cc2c4-cd2c-8005-9035-3928bcdbf1d4#:~:text=articles)%0ASample%20articles%3A-,One%2Dway%20masking,-COVID%20isolation%20guidelines]
-
-Is mushroom coffee healthy? [https://www.aarp.org/health/conditions-treatments/covid-isolation-guidelines/]
-
-Nuts and seeds for brain health [https://www.aarp.org/health/conditions-treatments/cdc-spring-covid-vaccine/]
-
-This theme contains articles directly related to public health measures and preventive strategies for COVID-19. The grouping is clear and appropriate.
-
-3. Eye Health (28 articles)
-Sample articles:
-
-Should you get LASIK surgery? [https://www.aarp.org/health/conditions-treatments/should-you-get-lasik-surgery/]
-
-Common mistakes with eye drops [https://www.aarp.org/health/conditions-treatments/eye-drops-common-mistakes/]
-
-Eye health conditions and treatments [https://www.aarp.org/health/conditions-treatments/eye-health-conditions-symptoms-treatments/]
-
-The cluster correctly includes articles about eye treatments, conditions, and general eye care. The theme is well-defined and cohesive.
-
-
-
-Word Clouds for Top Themes
-To provide deeper insight into the dominant topics within each cluster, we generated word clouds for the top three themes: Nutrition, COVID-19 Prevention, and Eye Health. Each word cloud was generated by aggregating all content from articles assigned to that theme and highlighting the most frequently occurring words.
-
-Observations & Justification
-Word size represents frequency — the larger the word, the more often it appears across articles in that theme.
-
-Words were drawn directly from the cleaned article content.
-
-
-Nutrition
-
-[image for word cloud of nutrition]
-
-The word cloud clearly emphasizes terms like “food,” “calorie,” “fiber,” “protein,” “meal,” and “diet”, which justifies the cluster’s label. Supporting terms like “supplement,” “nutrient,” and “weight” further reflect discussions around healthy eating, weight loss, and disease prevention—core areas within nutritional content.
-
-
-COVID-19 Prevention
-
-In this theme, high-frequency words include “vaccine,” “covid19,” “symptom,” “variant,” “infection,” “cdc,” and “immunity.” These terms indicate widespread discussion around vaccination campaigns, public health policy, and the evolving nature of the virus. Words like “patient,” “treatment,” “adults,” and “long” further reflect nuanced concerns like long COVID and access to care for older populations.
-
-
-Eye Health
-
-This cluster is anchored by dominant terms like “eye,” “vision,” “cataract,” “lens,” “glasses,” “dry,” and “drops.” These reflect a focus on age-related vision issues and treatments. The presence of “surgery,” “exam,” “risk,” “glaucoma,” and “presbyopia” strengthens the clinical and diagnostic context of the theme.
-
-
-These word clouds help confirm that the themes assigned to each group of articles are accurate by visually highlighting the most frequent and relevant terms found within each cluster. -->
-
-
-
-
 ## Results
 
 ### Article Collection and Preprocessing
@@ -493,6 +372,21 @@ To provide a deeper understanding of each theme, **word clouds** were generated 
 
 These word clouds help confirm that the themes assigned to each group of articles are accurate by visually highlighting the most frequent and relevant terms found within each cluster. Stakeholders can quickly understand what each cluster represents, identify missing subtopics, and use this insight to guide content or campaign strategy more effectively.
 
+---
+
+## Cost Analysis
+
+| **Stage**              | **Model**                               | **Provider** | **Input**              | **Cost (USD)** |
+|------------------------|------------------------------------------|--------------|-------------------------|----------------|
+| Summarization          | Meta LLaMA-4 Maverick 17B 128e Instruct | Groq         | 296 full articles       | **$0.265**     |
+| Theme Clustering       | GPT-4                                   | OpenAI       | 296 summaries           | **~$5–8**      |
+| **Total Cost**         | —                                        | —            | —                       | **~$5.25–8.26**|
+
+### Key Points:
+- Summarization using Groq's LLaMA-4 model cost less than **$0.30 total**.
+- GPT-4 was used to cluster the 296 summaries with high accuracy at low cost.
+- The entire pipeline processed 296 articles at **under 3 cents (USD) per article**.
+- This approach balances performance and cost, making it suitable for scalable applications.
 
 
 
