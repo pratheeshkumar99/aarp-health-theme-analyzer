@@ -36,19 +36,17 @@ The aim of this project is to create a **fully automated pipeline** that helps A
 
 This system turns a large, unstructured collection of articles into a clear, organized view of the main health themes AARP is covering. It creates practical value in the following ways:
 
-- **Editorial teams** can quickly see which topics are being heavily covered and which ones may be missing. This helps them decide what to write next, avoid redundancy, and maintain a balanced editorial calendar.
+- **Editorial teams** can quickly spot which topics are over- or under-covered, helping them plan new content, reduce duplication, and maintain a balanced editorial strategy.
 
-- **Marketing and product teams** can use these theme clusters to guide their outreach and product positioning. Since the articles may come from a wide range of contributors—including staff writers, medical experts, partner organizations, and community voices—the themes captured by this system reflect not just internal priorities, but broader health trends and public concerns. This allows AARP to:
+- **Marketing and product teams** can use these theme clusters to guide their outreach and product positioning. Since the articles may come from a wide range of contributors—including staff writers, medical experts, partner organizations, and community voices—the themes captured by this system reflect not just internal priorities, but broader health trends and public concerns. This enables AARP to:
   - Time campaigns around seasonal health risks (e.g., heatstroke in summer),
-  - Launch educational products around high-interest topics (e.g., memory health or hydration),
-  - And create member engagement strategies that speak to what the public is already thinking and talking about.
+  - Launch educational products around high-interest topics (e.g., memory health or hydration)
 
-- **Data analysts and strategists** gain a powerful lens into how AARP’s content focus evolves over time. For example, they might notice a large spike in COVID-19 coverage during 2021 followed by increasing attention to mental health, brain health, or exercise in recent quarters. Because this system captures themes across all article sources, it can also reveal broader shifts in societal health priorities. Analysts can then:
+- **Data analysts and strategists** gain insight into how content priorities shift over time. For example, they might see high coverage of COVID-19 in 2021 and rising interest in mental wellness more recently. By comparing publishing trends with audience engagement, they can:
   - Monitor emerging or declining interest areas,
-  - Compare publishing trends with engagement metrics (e.g., page views, shares),
   - And inform leadership decisions about where to allocate resources, funding, or advocacy.
 
-Ultimately, this system helps AARP stay aligned with both member interests and larger public health conversations—backed by structured, data-driven insights rather than guesswork.
+In short, this system helps AARP stay responsive to both member needs and broader public health narratives—grounded in structured, data-driven insight.
 
 
 
