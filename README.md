@@ -210,7 +210,16 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
 ---
 
-### 3. Data Summarizer (`summarizer.py`)
+### 3. Article Tagger (`tagger.py`)
+
+- **Purpose:** Assign each article a set of five keywords that summarize its main topics, enabling quick article assesment and easy discovery.
+
+- **How It Works:**
+
+    The tagger processes each cleaned article’s full text by sending it to a Groq-powered LLM endpoint. For every article, the `tag()` function composes a chat prompt that instructs the model to behave as a “medical content analyst” and return exactly five keywords separated by commas. It then appends the article’s content as the user message. Groq’s API responds with a comma-separated list of keywords, which the tagger splits and trims to ensure five items per article. As it iterates through the DataFrame, the tagger respects rate limits by pausing briefly between requests and taking longer breaks every 25 articles. The final output is a dictionary mapping each article’s URL to its five keywords, saved as `results/document_keywords.json`. These keywords provide a quick, LLM-powered topic assignment for each article, allowing stakeholders to identify major subjects at a glance without reading full texts.  
+
+
+### 4. Data Summarizer (`summarizer.py`)
 
 - **Purpose:** Generate concise, consistent summaries for each cleaned article using a Large Language Model.
 
@@ -235,7 +244,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
     By precomputing summaries, the system reduces each article to a few sentences, which in turn minimizes the token overhead during the clustering step. Passing concise summaries to the clustering LLM (often a more powerful, paid API) makes clustering faster, more accurate, and less prone to hallucination, while also lowering the cost and computation compared to feeding full-length articles into the clustering model.
 
 
-### 4. Clustering & Tagging (`cluster.py` and `tagger.py`)
+### 5. Clustering & Tagging (`cluster.py` and `tagger.py`)
 
 - **Purpose:** Group articles with similar summaries into coherent themes, assigning each article to a theme that best represents its content.
 
@@ -248,7 +257,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
     Finally, once all batches have been processed, a helper function `reformat_results` transforms the flat mapping (article → theme) into a mapping of each theme to its list of article IDs. The result is saved as `results/cluster_results.json` (theme → article URLs). Also, `results/document_keywords.json` is generated to capture top keywords for each article, providing a quick accurately content reflection. By using concise summaries, batching, and dynamic prompts, this approach keeps each LLM call efficient, minimizes token usage, and reduces hallucination risk, while producing clear, human-readable themes for downstream analysis.
 
 
-### 5. Outputs & Visualization
+### 6. Outputs & Visualization
 
 - **Purpose:** Present clustering results in a structured format and enable quick, interactive insights through visual plots.
 
