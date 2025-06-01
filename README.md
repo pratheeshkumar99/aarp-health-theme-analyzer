@@ -185,23 +185,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
     The web scraper begins at a specified base URL (e.g., `https://www.aarp.org/health`) and uses a recursive function, `extract_article_Links(base_url, max_depth)`, to follow only those links whose path starts with `/health/`, up to a defined depth. By issuing HTTP requests and parsing each page with BeautifulSoup, it builds a set of valid article URLs and writes them to `links.txt`. Next, for each URL in this set (or from the existing `links.txt`), the helper function `get_content_from_link(link, df)` fetches the page, locates the `<div class="articlecontentfragment">` element, concatenates its text, cleans whitespace, and appends the result as `[link, full_text]` to a pandas DataFrame. Finally, the orchestrator function `extract_article_content(base_link)` combines these steps—calling `extract_article_Links`, reading or updating `links.txt`, iterating through each URL with `get_content_from_link`, and saving the completed DataFrame to `results/health_articles.csv` (columns: `Link` and `Content`).
 
-  <!-- 1. **`extract_article_Links(base_url, max_depth)`**  
-     - Starts at `base_url` (e.g., `https://www.aarp.org/health`).  
-     - Recursively follows only links whose path begins with `/health/`, up to a specified `max_depth`. This `depth` parameter limits how many levels of internal `/health/...` pages are crawled.  
-     - Uses `requests.get()` and `BeautifulSoup` to parse each page.  
-     - Collects every valid `/health/...` URL into a set and saves them to `links.txt`.
-
-  2. **`get_content_from_link(link, df)`**  
-     - Fetches the given article URL.  
-     - Looks for `<div class="articlecontentfragment">`.  
-     - Extracts and concatenates the text inside that div.  
-     - Cleans whitespace and adds one row `[link, full_text]` to a pandas DataFrame.
-
-  3. **`extract_article_content(base_link)`**  
-     - Calls `extract_article_Links(base_link, max_depth=3)` (or whatever depth you choose) to build a list of candidate URLs.  
-     - Reads from `links.txt` (if present) or uses the returned set.  
-     - Iterates over each URL, invoking `get_content_from_link` to gather full text.  
-     - Saves the final DataFrame (columns: `Link`, `Content`) to `results/health_articles_depth_3.csv`. -->
+---
 
 ### 2. Data Cleaner (`cleaner.py`)
 
@@ -221,6 +205,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
     The tagger processes each cleaned article’s full text by sending it to a Groq-powered LLM endpoint. For every article, the `tag()` function composes a chat prompt that instructs the model to behave as a “medical content analyst” and return exactly five keywords separated by commas. It then appends the article’s content as the user message. Groq’s API responds with a comma-separated list of keywords, which the tagger splits and trims to ensure five items per article. As it iterates through the DataFrame, the tagger respects rate limits by pausing briefly between requests and taking longer breaks every 25 articles. The final output is a dictionary mapping each article’s URL to its five keywords, saved as `results/document_keywords.json`. These keywords provide a quick, LLM-powered topic assignment for each article, allowing stakeholders to identify major subjects at a glance without reading full texts.  
 
+---
 
 ### 4. Data Summarizer (`summarizer.py`)
 
@@ -246,6 +231,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
             
     By precomputing summaries, the system reduces each article to a few sentences, which in turn minimizes the token overhead during the clustering step. Passing concise summaries to the clustering LLM (often a more powerful, paid API) makes clustering faster, more accurate, and less prone to hallucination, while also lowering the cost and computation compared to feeding full-length articles into the clustering model.
 
+---
 
 ### 5. Clustering & Tagging (`cluster.py` and `tagger.py`)
 
@@ -259,6 +245,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
     Finally, once all batches have been processed, a helper function `reformat_results` transforms the flat mapping (article → theme) into a mapping of each theme to its list of article IDs. The result is saved as `results/cluster_results.json` (theme → article URLs). Also, `results/document_keywords.json` is generated to capture top keywords for each article, providing a quick accurately content reflection. By using concise summaries, batching, and dynamic prompts, this approach keeps each LLM call efficient, minimizes token usage, and reduces hallucination risk, while producing clear, human-readable themes for downstream analysis.
 
+---
 
 ### 6. Outputs & Visualization
 
@@ -267,6 +254,9 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 - **How It Works:**
 
     Once clustering is complete, the system writes `results/cluster_results.json` (mapping each theme to its list of article URLs) and `results/document_keywords.json` (listing the top keywords per article). To make these results accessible, they can be loaded into a DataFrame and visualized using libraries like Matplotlib or Seaborn. For example, a bar chart of article counts per theme highlights which topics are most prevalent. These plots allow stakeholders to easily spot dominant themes, identify gaps in coverage effectively.  
+
+---
+
 
 
 
