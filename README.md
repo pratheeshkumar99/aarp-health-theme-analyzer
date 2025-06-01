@@ -287,7 +287,7 @@ A bar chart was created to visualize the **distribution of themes** across the d
 
 ![Theme Distribution Bar Chart](images/barplot.png)
 
-*Figure: Distribution of articles across various health themes. Nutrition dominates, followed by COVID-19 Prevention and Eye Health. Themes with fewer articles may represent underserved content areas.*
+*Figure: Distribution of articles across various health themes. Nutrition dominates, followed by COVID-19 Prevention and Eye Health.*
 
 
 ---
