@@ -36,17 +36,17 @@ The aim of this project is to create a **fully automated pipeline** that helps A
 
 This system turns a large, unstructured collection of articles into a clear, organized view of the main health themes AARP is covering. It creates practical value in the following ways:
 
-- **Editorial teams** can quickly spot which topics are over- or under-covered, helping them plan new content, reduce duplication, and maintain a balanced editorial strategy.
+- **Editorial teams** can quickly spot which topics are over- or under-covered, helping them plan new content, reduce duplication  maintaining a balanced editorial strategy.
 
 - **Marketing and product teams** can use these theme clusters to guide their outreach and product positioning. Since the articles may come from a wide range of contributors—including staff writers, medical experts, partner organizations, and community voices—the themes captured by this system reflect not just internal priorities, but broader health trends and public concerns. This enables AARP to:
   - Time campaigns around seasonal health risks (e.g., heatstroke in summer),
   - Launch educational products around high-interest topics (e.g., memory health or hydration)
 
-- **Data analysts and strategists** gain insight into how content priorities shift over time. For example, they might see high coverage of COVID-19 in 2021 and rising interest in mental wellness more recently. By comparing publishing trends with audience engagement, they can:
+- **Data analysts and strategists** gain insight into how content priorities shift over time. For example, they might see high coverage of COVID-19 in 2021 and rising interest in mental wellness more recently. By comparing publishing trends, they can:
   - Monitor emerging or declining interest areas,
   - And inform leadership decisions about where to allocate resources, funding, or advocacy.
 
-In short, this system helps AARP stay responsive to both member needs and broader public health narratives—grounded in structured, data-driven insight.
+
 
 
 
