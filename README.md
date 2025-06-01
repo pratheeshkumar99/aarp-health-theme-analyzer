@@ -160,3 +160,43 @@ Below is a high-level view of every file and folder in this repository:
 └── .env
 ```
 Each entry corresponds to a module or output used by the pipeline.  
+
+### Methodology
+
+### Block diagram
+
+
+![Pipeline Block Diagram](images/block-diagram.png)
+
+*Figure 1: High-level pipeline showing each module and its data flow.*
+
+Below is a detailed, step-by-step description of each stage. We begin with the **Web Scraper**, which crawls the AARP Health Channel to gather every article URL and its full content.
+
+---
+
+### 1. Web Scraper (`scraper.py`)
+
+- **Purpose:** Crawl the AARP Health Channel and collect every article’s URL and full text.
+
+- **How It Works:**
+  1. **`extract_article_Links(base_url, max_depth)`**  
+     - Starts at `base_url` (e.g., `https://www.aarp.org/health`).  
+     - Recursively follows only links whose path begins with `/health/`, up to a specified `max_depth`. This `depth` parameter limits how many levels of internal `/health/...` pages are crawled.  
+     - Uses `requests.get()` and `BeautifulSoup` to parse each page.  
+     - Collects every valid `/health/...` URL into a set and saves them to `links.txt`.
+
+  2. **`get_content_from_link(link, df)`**  
+     - Fetches the given article URL.  
+     - Looks for `<div class="articlecontentfragment">`.  
+     - Extracts and concatenates the text inside that div.  
+     - Cleans whitespace and adds one row `[link, full_text]` to a pandas DataFrame.
+
+  3. **`extract_article_content(base_link)`**  
+     - Calls `extract_article_Links(base_link, max_depth=3)` (or whatever depth you choose) to build a list of candidate URLs.  
+     - Reads from `links.txt` (if present) or uses the returned set.  
+     - Iterates over each URL, invoking `get_content_from_link` to gather full text.  
+     - Saves the final DataFrame (columns: `Link`, `Content`) to `results/health_articles_depth_3.csv`.
+
+- **Output:**  
+  A CSV file at `results/health_articles_depth_3.csv` containing every scraped article’s URL and its cleaned, full-text content.  
+
