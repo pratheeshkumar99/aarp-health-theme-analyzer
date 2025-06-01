@@ -388,6 +388,22 @@ These word clouds help confirm that the themes assigned to each group of article
 - The entire pipeline processed 296 articles at **$0.023 USD per article**, keeping it **well under 3 cents per article**.
 - This setup ensures high-quality output while maintaining strong cost-efficiency for scalable deployments.
 
+---
+
+
+## Future Scope of Work
+
+I plan to extend this work in the following key directions to make the system more robust, automated, and scalable:
+
+1. **Scheduled Updates with Airflow DAGs**  
+   Integrate **Apache Airflow** to run the entire pipeline (scraping, summarization, clustering) on a regular schedule. This will allow AARP to automatically update themes as new articles are published, and monitor how content trends evolve over time — such as seasonal spikes in flu-related content or rising interest in mental health topics.
+
+2. **Persistent Storage and Incremental Clustering**  
+   Connect the pipeline to a **database backend** (e.g., PostgreSQL or BigQuery) to persist article summaries and historical clustering data. This enables future batches of articles to reference and reuse previous themes, improving consistency. Over time, we can evaluate how articles align with or diverge from existing clusters.
+
+3. **LLM-as-a-Judge for Cluster Validation**  
+   Add a validation module where a separate LLM (e.g., GPT-4 or Claude) is used to **evaluate the coherence of each cluster**. This “LLM-as-a-judge” step can flag poor or noisy clusters, recommend merging similar themes, and ensure higher-quality output.
+
 
 
 
