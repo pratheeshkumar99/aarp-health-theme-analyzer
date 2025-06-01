@@ -235,6 +235,20 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
     By precomputing summaries, the system reduces each article to a few sentences, which in turn minimizes the token overhead during the clustering step. Passing concise summaries to the clustering LLM (often a more powerful, paid API) makes clustering faster, more accurate, and less prone to hallucination, while also lowering the cost and computation compared to feeding full-length articles into the clustering model.
 
 
+### 4. Clustering & Tagging (`cluster.py` and `tagger.py`)
+
+- **Purpose:** Group articles with similar summaries into coherent themes, assigning each article to a theme that best represents its content.
+
+- **How It Works:**
+
+    First, the clustering module converts the DataFrame of article IDs and summaries into a list of `Article` objects. To keep each LLM prompt within token limits, articles are split into small batches (default size: 5). For each batch, the system constructs a prompt containing two JSON sections: one listing all previously discovered theme names (`existing_themes_json`), and another listing the batch’s articles with their IDs and summaries (`new_articles_json`). The LLM is instructed to first map any new article into an existing theme if it fits, then group multiple articles under a new theme if they share a common topic, and only assign a unique theme if no grouping is possible. This dynamic, priority-based approach ensures stable, consistent themes over time and prevents unnecessary fragmentation.
+
+    The LLM’s response is parsed via a `PydanticOutputParser` into a `ThemeMap` object containing `doc_to_theme` (mapping article IDs to theme names) and `new_theme_names` (any newly coined themes). If the raw output is malformed, an `OutputFixingParser` automatically corrects it. After each batch, the newly assigned themes update the global `article_to_theme` dictionary, and any new theme names are added to the set of known themes, with a progress message indicating how many themes have been discovered so far.
+
+    Finally, once all batches have been processed, a helper function `reformat_results` transforms the flat mapping (article → theme) into a mapping of each theme to its list of article IDs. The result is saved as `results/cluster_results.json` (theme → article URLs). Also, `results/document_keywords.json` is generated to capture top keywords for each article, providing a quick accurately content reflection. By using concise summaries, batching, and dynamic prompts, this approach keeps each LLM call efficient, minimizes token usage, and reduces hallucination risk, while producing clear, human-readable themes for downstream analysis.
+
+
+
 
 
 
