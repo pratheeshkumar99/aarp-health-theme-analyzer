@@ -95,9 +95,9 @@ python main.py
 > **Note:**  
 > - `main.py` orchestrates all modules (scraper, cleaner, summarizer, cluster, etc.) in the correct sequence.  
 > - Output files will be generated inside the `results/` directory:  
->   - `article_to_theme.json`: mapping of article IDs to their assigned themes  
->   - `cluster_results.json`: which article links belong to each theme cluster  
->   - `document_keywords.json`: major keywords each article focuses on  
+>   - `cluster_results.json`: shows, for each theme, the list of article links that belong to that cluster.  
+>   - `document_keywords.json`: lists the major keywords that each article primarily discusses.
+>   - `summaries.json`: summaries for each article    
 
 ---
 
@@ -129,6 +129,7 @@ docker run --env-file .env -v $(pwd)/results:/app/results aarp-health-cluster
 > - Any output files created inside the container (e.g., `cluster_results.json`, `document_keywords.json`) will be saved to the `results/` folder on your local machine.  
 > - `cluster_results.json` shows, for each theme, the list of article links that belong to that cluster.  
 > - `document_keywords.json` lists the major keywords that each article primarily discusses.
+>   - `summaries.json`: summaries for each article 
 
 ---
 
