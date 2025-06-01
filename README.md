@@ -163,8 +163,11 @@ Each entry corresponds to a module or output used by the pipeline.
 
 ## Methodology
 
-### Block diagram
+**Solution Overview:**  
+My pipeline first scrapes and cleans all articles, then generates concise summaries for each. I also extract five keywords per article using Meta llama-4 model to provide a quick topic preview—so editors can instantly see each article’s main subjects helping them filter content. Next, I group summaries into small batches and send them to an LLM prompt that includes any existing theme names. The model assigns each article to an existing theme when it fits, creates a new theme if multiple articles share a topic, and only makes a unique theme if absolutely necessary. This approach automatically uncovers new themes (for example, “Long COVID” or “Heat-Related Health Risks”) and keeps labels consistent over time by reusing established themes. In contrast, traditional embedding-and-KNN methods force each article into a fixed set of clusters and cannot adapt to emerging topics or articles that span multiple subjects. By combining rapid keyword previews with batch clustering and dynamic theme naming, my solution delivers both detailed insights at the article level and a clear, data-driven set of high-level themes.
 
+
+### Block diagram
 
 ![Pipeline Block Diagram](images/block-diagram.png)
 
