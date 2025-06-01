@@ -174,11 +174,11 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
 
 ---
 
-### 1. Web Scraper (`scraper.py`)
+    ### 1. Web Scraper (`scraper.py`)
 
-- **Purpose:** Crawl the AARP Health Channel and collect every article’s URL and full text.
+    - **Purpose:** Crawl the AARP Health Channel and collect every article’s URL and full text.
 
-- **How It Works:**
+    - **How It Works:**
 
     The web scraper begins at a specified base URL (e.g., `https://www.aarp.org/health`) and uses a recursive function, `extract_article_Links(base_url, max_depth)`, to follow only those links whose path starts with `/health/`, up to a defined depth. By issuing HTTP requests and parsing each page with BeautifulSoup, it builds a set of valid article URLs and writes them to `links.txt`. Next, for each URL in this set (or from the existing `links.txt`), the helper function `get_content_from_link(link, df)` fetches the page, locates the `<div class="articlecontentfragment">` element, concatenates its text, cleans whitespace, and appends the result as `[link, full_text]` to a pandas DataFrame. Finally, the orchestrator function `extract_article_content(base_link)` combines these steps—calling `extract_article_Links`, reading or updating `links.txt`, iterating through each URL with `get_content_from_link`, and saving the completed DataFrame to `results/health_articles.csv` (columns: `Link` and `Content`).
 
@@ -229,7 +229,7 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
             "summary": "The author explores early signs of dementia, risk factors, and lifestyle changes that may help prevent cognitive decline."
         }
         }
-        
+
         ```
                 
         By precomputing summaries, the system reduces each article to a few sentences, which in turn minimizes the token overhead during the clustering step. Passing concise summaries to the clustering LLM (often a more powerful, paid API) makes clustering faster, more accurate, and less prone to hallucination, while also lowering the cost and computation compared to feeding full-length articles into the clustering model.
