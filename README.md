@@ -379,14 +379,15 @@ These word clouds help confirm that the themes assigned to each group of article
 | **Stage**              | **Model**                               | **Provider** | **Input**              | **Cost (USD)** |
 |------------------------|------------------------------------------|--------------|-------------------------|----------------|
 | Summarization          | Meta LLaMA-4 Maverick 17B 128e Instruct | Groq         | 296 full articles       | **$0.265**     |
-| Theme Clustering       | GPT-4                                   | OpenAI       | 296 summaries           | **~$5–8**      |
-| **Total Cost**         | —                                        | —            | —                       | **~$5.25–8.26**|
+| Theme Clustering       | GPT-4                                   | OpenAI       | 296 summaries           | **$6.50**      |
+| **Total Cost**         | —                                        | —            | —                       | **$6.76**|
 
 ### Key Points:
-- Summarization using Groq's LLaMA-4 model cost less than **$0.30 total**.
-- GPT-4 was used to cluster the 296 summaries with high accuracy at low cost.
-- The entire pipeline processed 296 articles at **under 3 cents (USD) per article**.
-- This approach balances performance and cost, making it suitable for scalable applications.
+- Summarization using Groq's LLaMA-4 model cost exactly **$0.265**.
+- GPT-4 was used to cluster the 296 summaries with high accuracy at an average cost of **$6.50**.
+- The entire pipeline processed 296 articles at **$0.023 USD per article**, keeping it **well under 3 cents per article**.
+- This setup ensures high-quality output while maintaining strong cost-efficiency for scalable deployments.
+
 
 
 
