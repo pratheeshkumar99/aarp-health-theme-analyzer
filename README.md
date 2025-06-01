@@ -227,9 +227,10 @@ Below is a detailed, step-by-step description of each stage. We begin with the *
         "1": {
             "content": "In this post, the author discusses early signs of dementia, risk factors, and preventative lifestyle choices to help reduce cognitive decline.",
             "summary": "The author explores early signs of dementia, risk factors, and lifestyle changes that may help prevent cognitive decline."
-        },
-        ...
         }
+        }
+        
+        ```
                 
         By precomputing summaries, the system reduces each article to a few sentences, which in turn minimizes the token overhead during the clustering step. Passing concise summaries to the clustering LLM (often a more powerful, paid API) makes clustering faster, more accurate, and less prone to hallucination, while also lowering the cost and computation compared to feeding full-length articles into the clustering model.
 
