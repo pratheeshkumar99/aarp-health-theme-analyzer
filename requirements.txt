@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+pandas
+tqdm
+groq
+python-dotenv
+langchain
+langchain-community
+openai
