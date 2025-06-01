@@ -173,7 +173,7 @@ My pipeline first scrapes and cleans all articles, then generates concise summar
 
 *Figure 1: High-level pipeline showing each module and its data flow.*
 
-Below is a detailed, step-by-step description of each stage. We begin with the **Web Scraper**, which crawls the AARP Health Channel to gather every article URL and its full content.
+Below is a detailed, step-by-step description of each stage. I begin with the **Web Scraper**, which crawls the AARP Health Channel to gather every article URL and its full content.
 
 ---
 
@@ -305,7 +305,7 @@ A bar chart was created to visualize the **distribution of themes** across the d
 
 ### Cluster Quality Evaluation
 
-To assess quality, we reviewed representative samples from the **top three themes**:
+To assess quality, I reviewed representative samples from the **top three themes**:
 
 #### 1. Nutrition (58 articles)
 - Sample Articles:
@@ -399,7 +399,7 @@ I plan to extend this work in the following key directions to make the system mo
    Integrate **Apache Airflow** to run the entire pipeline (scraping, summarization, clustering) on a regular schedule. This will allow AARP to automatically update themes as new articles are published, and monitor how content trends evolve over time — such as seasonal spikes in flu-related content or rising interest in mental health topics.
 
 2. **Persistent Storage and Incremental Clustering**  
-   Connect the pipeline to a **database backend** (e.g., PostgreSQL or BigQuery) to persist article summaries and historical clustering data. This enables future batches of articles to reference and reuse previous themes, improving consistency. Over time, we can evaluate how articles align with or diverge from existing clusters.
+   Connect the pipeline to a **database backend** (e.g., PostgreSQL or BigQuery) to persist article summaries and historical clustering data. This enables future batches of articles to reference and reuse previous themes, improving consistency. Over time, I can evaluate how articles align with or diverge from existing clusters.
 
 3. **LLM-as-a-Judge for Cluster Validation**  
    Add a validation module where a separate LLM (e.g., GPT-4 or Claude) is used to **evaluate the coherence of each cluster**. This “LLM-as-a-judge” step can flag poor or noisy clusters, recommend merging similar themes, and ensure higher-quality output.
