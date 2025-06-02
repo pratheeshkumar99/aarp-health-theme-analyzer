@@ -44,8 +44,6 @@ def main(link):
             print("Error: No valid articles after cleaning. Check content quality.")
             raise Exception("No valid articles after cleaning")
         
-        cleaned_df = cleaned_df[:20] # Limit to 20 articles for testing/development
-
         # Save intermediate result
         try:
             cleaned_df.to_csv("results/cleaned_articles.csv", index=False)
