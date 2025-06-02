@@ -91,11 +91,6 @@ def article_tagger(df):
         except Exception as e:
             print(f"Error processing article {index}: {e}")
             raise Exception(f"Error processing article {index}: {e}")
-            # document_to_tags[row.get('Link', f"unknown_{index}")] = []
-            # # If rate limit error, wait longer
-            # if "rate" in str(e).lower():
-            #     print("Rate limit hit. Waiting 120 seconds...")
-            #     time.sleep(120)
     
     return document_to_tags
 
