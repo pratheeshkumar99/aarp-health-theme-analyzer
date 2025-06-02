@@ -128,7 +128,7 @@ def extract_article_content(link="https://www.aarp.org/health"):
       os.makedirs("results", exist_ok=True)
 
       # Save results to CSV
-      df.to_csv("results/health_articles_depth_3.csv" , index=False)
+      df.to_csv("results/health_articles.csv" , index=False)
       print(f"Saved {len(df)} articles to results/health_articles_depth_3.csv")
 
 
