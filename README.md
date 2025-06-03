@@ -121,7 +121,10 @@ cd aarp-health-theme-cluster
 docker build -t aarp-health-cluster .
 
 # 4. Run the container, mounting a local 'results/' directory
-docker run --env-file .env -v $(pwd)/results:/app/results aarp-health-cluster
+docker run --rm \
+  -v "$PWD/results":/app/results \
+  aarp-theme-miner:latest
+
 ```
 
 > **Note:**  
